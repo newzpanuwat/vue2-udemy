@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue JS Lesson2</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app2">
+        <h1>Vue JS 2: Lesson 2</h1>
+        <hr>
+        <img v-bind:src="link" style="width:200px;height: 200px;" alt="lesson2">
+
+        <p>Click this !!</p>
+        <button v-on:click="increase(3, $event)"> Click</button>
+        <p>{{ counter }}</p>
+
+        <p v-on:mousemove.stop="coordinates">Coordinates: {{ x }} / {{ y }}</p>
+        <p>- DEAD SPOT</p>
+
+        <input type="text" v-on:keyup.enter.space="alertMe">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+                data: {
+                    link: "https://www.programwitherik.com/content/images/2017/01/87ow.png",
+                    counter: 0,
+                    x: 0,
+                    y: 0
+                },
+
+                methods: {
+                    increase: function(step, event){
+                        return this.counter+=step
+                    },
+                    coordinates: function(event){
+                        this.x = event.clientX;
+                        this.y = event.clientY;
+                    },
+                    alertMe: function(){
+                        alert('Alert !!!')
+                    }
+                }
+        })
+    </script>
+</body>
+</html>

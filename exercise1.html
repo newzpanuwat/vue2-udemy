@@ -11,8 +11,9 @@
     <div id="exercise">
             <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
                 <h1>Vue JS Exercise 1</h1>
+                <hr>
                 <p>VueJS is pretty cool - YOUR_NAME (AGE)</p>
-                <p>Name: {{ name }}</p>
+                <p v-once>Name: {{ name }}</p>
                 <p>Age: {{ age }}</p>
 
                 <!-- 2) Output your age, multiplied by 3 -->
@@ -23,12 +24,12 @@
 
                 <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
                 <div>
-                    <img v-bind:src="link" style="width:100px;height:100px" >
+                    <img v-bind:src="link" style="width:200px;height:200px" >
                 </div>
 
                 <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
                 <div>
-                    <input type="text" v-on:input="changeName">
+                    <input type="text" v-on:input="changeName"> <p> {{ name }}</p>
                 </div>
             </div>
     
@@ -42,7 +43,7 @@
                 },
                 methods: {
                     changeName: function(event) {
-                        this.name = event.target.value;
+                        return this.name = event.target.value;
                     },
                     randomNumber: function(){
                         random = Math.random();

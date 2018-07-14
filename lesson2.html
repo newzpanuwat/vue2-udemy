@@ -16,6 +16,7 @@
         <p>Click this !!</p>
         <button v-on:click="increase(3, $event)"> Click</button>
         <p>{{ counter }}</p>
+        <p>{{ counter * 2 > 10 ? 'Greather than 10' : 'Smaller than 10' }}</p>
 
         <p v-on:mousemove.stop="coordinates">Coordinates: {{ x }} / {{ y }}</p>
         <p>- DEAD SPOT</p>

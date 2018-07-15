@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lesson 3 </title>
+  <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+      <h1> Lesson 3: Conditions and Lists</h1>
+      <img v-bind:src="coverImage" style="width:500px; height: 300px;">
+
+      <ul>
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient">{{ ingredient }} ({{ i }})</li>
+        <button @click="ingredients.push('spices')">Add New</button>
+      </ul>
+      <hr>
+
+      <ul>
+        <li v-for="person in persons">
+          <div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
+        </li>
+      </ul>
+      <hr>
+
+      <span v-for= "n in 10">{{ n }}</span>
+      <hr>
+
+      <hr>
+      <template v-for="(ingredient, index) in ingredients">
+        <h2>{{ ingredient }}</h2>
+        <p>({{ index }})</p>
+      </template>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          coverImage: 'https://cdn-images-1.medium.com/max/2000/1*G1PUKcevhmpXSKUeX9XnLA.png',
+          ingredients: ['meat', 'fruits', 'cookies', 'salt'],
+          persons: [
+            { name: 'Panuwat', age: '29', color: 'red' },
+            { name: 'Angkana', age: '11', color: 'green' },
+            { name: 'Somchai', age: '9', color: 'blue' }
+          ]
+        }
+      });
+    </script>
+</body>
+</html>

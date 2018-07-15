@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Exercise 4</title>
+</head>
+<body>
+  <div id="exercise4">
+
+    <h1>This Exercise 4 Vue JS2</h1>
+    <img v-bind:src="link" alt="vueImage">
+
+    <div>
+      <p>1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below)</p>
+      <button @click="startEffect">Start Effect</button>
+      <div id="effect" v-bind:class="effectClasses"></div>
+    </div>
+
+    <p>2.)</p>
+    <div v-bind:class="[float, 'blue', 'text-color']">I got no class :(</div>
+
+    <div>
+      <p>3) Let the user enter a class (create some example classes) and attach it</p>
+      <input type="text" v-model="userClass">
+      <div v-bind:class="[{visible: true}, userClass]"></div>
+    </div>
+    <!-- 4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes -->
+    <div>
+      <p>4.)  Let the user enter a class and enter true/ false for another class (create some example classes) and attach the classes</p>
+      <input type="text" v-model="userClass">
+      <input type="text" v-model="isVisible">
+      <div v-bind:class="[{visible: isVisible}, userClass]"></div>      
+    </div>
+    <!-- 5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.  -->
+    <div>
+      <p>5.) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.</p>
+      <input type="text" v-model="myStyle.backgroundColor">
+      <div v-bind:style="myStyle"></div>
+    </div>
+    <!-- 6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button. -->
+    <div>
+      <p>6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button.</p>
+      <button v-on:click="startProgress">Start Progress</button>
+      <div v-bind:class="['progress-bar']" v-bind:style="progressBar">
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+      new Vue({
+        el: '#exercise4',
+        data: {
+          link: "https://cms-assets.tutsplus.com/uploads/users/71/courses/1121/preview_image/135093_Adam_Noonan_Thumbnail_Vue_02_400x277px_101217.png",
+          effectClasses: {
+            highlight: false,
+            shrink: true
+          },
+          float: 'float',
+          userClass: '',
+          isVisible: true,
+          myStyle: {
+            width: '100px',
+            height: '100px',
+            backgroundColor: 'gray' 
+          },
+          progressBar: {
+            width: '0px',
+            backgroundColor: '#75efbc'
+
+          }
+        },
+        methods: {
+          startEffect: function(){
+            var vm = this;
+            setInterval(function(){
+              vm.effectClasses.highlight = !vm.effectClasses.highlight;
+              vm.effectClasses.shrink = !vm.effectClasses.shrink;
+            },1000);
+          },
+
+          startProgress: function(){
+            var vm = this;
+            var width = 0;
+            setInterval(function(){
+              width += 10
+              vm.progressBar.width =  width + 'px'
+            }, 500)
+          }
+        }
+      });
+  </script>
+</body>
+</html>

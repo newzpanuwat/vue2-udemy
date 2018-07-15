@@ -12,7 +12,7 @@
     <div id="app2">
         <div class="demo2" :style="{backgroundColor: color}"></div>
         <div class="demo2" :style="myStyle"></div>
-        <div class="demo2"></div>
+        <div class="demo2" :style="[myStyle, {height: width + 'px'}]"></div>
         <hr>
         <input type="text" v-model="color">
         <input type="text" v-model="width">
